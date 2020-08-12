@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            height : 50px;
+            text-align: center;
+            padding-top : 20px;
+            margin : 10px;
+            background-color:#eeeeee;
+        }
+    </style>
+    <script src="jquery.js"></script>
+    <script>
+        function getQueryStringObject() {
+            var a = window.location.search.substr(1).split('&');
+            if (a == "") return {};
+            var b = {};
+            for (var i = 0; i < a.length; ++i) {
+                var p = a[i].split('=', 2);
+                if (p.length == 1)
+                    b[p[0]] = "";
+                else
+                    b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+            }
+            return b;
+        }
+        let q = getQueryStringObject();
+
+        $('document').ready(function() {
+            $('h2').text(q.page);
+            let div = $('div');
+            let mode = ["./practice.html?", "./random.html?", "./quiz.html?"];
+            for(let i = 0; i < 2 ; i++) {
+                let url = mode[i] + 'page=' + q.page;
+                div[i].setAttribute('onclick', 'location.href = \'' + url + '\'');
+            }
+        });
+    </script>
+</head>
+<body>
+    <center id="contents">
+        <h2>_과 단어</h2>
+        <div>뜻 맞추기</div>
+        <div>영어 맞추기</div>
+        <div onclick="location.href ='./index.html'">뒤로가기</div>
+    </center>
+</body>
+</html>

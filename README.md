@@ -1,2 +1,2 @@
-english-word-card
-https://english-bq.web.app/
+# english-word-card
+### url : https://english-bq.web.app/
